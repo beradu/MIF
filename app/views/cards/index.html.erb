@@ -1,0 +1,23 @@
+<h1> My Cards<h1>
+
+
+<%= link_to 'New Card', new_card_path %>
+<table>
+	<tr>
+		<th>Card</th>
+		<th>Description</th>
+	</tr>
+
+<% @cards.each do |card| %>
+	<tr>
+		<td><%= card.title %></td>
+		<td><%= card.text %></td>
+		<td><%= link_to 'Show', card_path(card) %></td>
+		<td><%= link_to 'Edit', edit_card_path(card) %></td>
+		<td><%= link_to 'Delete', card_path(card), 
+							method: :delete, data: { confirm: 'Are you sure?'} %></td>
+	</tr>
+	<% end %>
+</table>
+
+

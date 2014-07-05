@@ -1,0 +1,13 @@
+<p>
+	<strong>Title:</strong>
+	<%= @card.title %>
+
+</p>
+
+<p>
+	<strong>Text:</strong>
+	<%= @card.text %>
+</p>
+
+<%= link_to 'Back', cards_path %>
+	<%= link_to 'Edit', edit_card_path(@card) %>
