@@ -2,7 +2,7 @@ MIF::Application.routes.draw do
   devise_for :users
   resources :cards
 
-  root 'pages#home'
+  root 'cards#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

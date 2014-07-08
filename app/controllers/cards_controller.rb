@@ -9,7 +9,7 @@ before_action :set_card, only: [:show, :edit, :update, :destroy]
 	end	
 	
 	def index
-		@cards =  Card.all
+		@cards =  Card.all.order("created_at DESC").paginate(:page => params[:page])
 	end
 
 	def show
