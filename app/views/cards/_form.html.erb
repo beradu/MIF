@@ -13,16 +13,21 @@
   <% end %>
   
   <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
  
   <div class="form-group">
-    <%= f.label :text %>
+     Describe this card
     <%= f.text_area :text, class: "form-control" %>
   </div>
  
-<div class="form-group">
+  <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

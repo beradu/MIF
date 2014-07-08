@@ -1,23 +1,32 @@
-<h1> My Cards<h1>
+<%= render 'pages/home' unless user_signed_in? %>
 
 
-<%= link_to 'New Card', new_card_path %>
-<table>
-	<tr>
-		<th>Card</th>
-		<th>Description</th>
-	</tr>
-
-<% @cards.each do |card| %>
-	<tr>
-		<td><%= card.title %></td>
-		<td><%= card.text %></td>
-		<td><%= link_to 'Show', card_path(card) %></td>
-		<td><%= link_to 'Edit', edit_card_path(card) %></td>
-		<td><%= link_to 'Delete', card_path(card), 
-							method: :delete, data: { confirm: 'Are you sure?'} %></td>
-	</tr>
-	<% end %>
-</table>
+<div id="cards" class="transitions-enabled">
+  <% @cards.each do |card| %>
+    <div class="box panel panel-default">
+          <%= link_to image_tag(card.image.url(:medium)), card %>
+        <div class="panel-body">
+         <p><%= card.title %></p>	
+         <p><%= card.text %></p>
+          <strong><%= card.user.name if card.user %></strong>
+          
+          <% if current_user && (card.user == current_user) %>
+                
+               </p>
+                <div class="actions">
+                  <%= link_to edit_card_path(card) do %>
+                    <span class="glyphicon glyphicon-pushpin"></span>
+                    Edit
+                  <% end %>
+                <%= link_to card, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                 <span class="glyphicon glyphicon-trash"></span>
+                  Delete
+                 <% end %>
+                </div>
+      <% end %> 
+      </div>  
+    </div>
+      <% end %>
+</div>
 
 

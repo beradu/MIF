@@ -1,13 +1,36 @@
-<p>
-	<strong>Title:</strong>
-	<%= @card.title %>
+<%= link_to cards_path do %>
+<span class="glyphicon glyphicon-chevron-left"></span>
+		Back
+	<% end %>
 
-</p>
 
-<p>
-	<strong>Text:</strong>
-	<%= @card.text %>
-</p>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading center">
+				<%= image_tag @card.image.url (:medium) %>
+			</div>
+	<div class="panel-body">
+		<h2 align="center">
+		<p>
+		<%= @card.title %>
+		</p>
+		</h2>
+		<p align="center">
+		<%= @card.text %>
+		</p>
 
-<%= link_to 'Back', cards_path %>
-	<%= link_to 'Edit', edit_card_path(@card) %>
+<% if current_user && (@card.user == current_user) %>
+
+
+	<%= link_to cards_path do %>
+	<span class="glyphicon glyphicon-pushpin"></span> Edit
+		<% end %>
+	<%= link_to @card, method: :delete, data: { confirm: 'Are you sure?' } do %>
+             <span class="glyphicon glyphicon-trash"></span>
+              Delete
+             <% end %>	
+<% end %>
+		</div>
+	</div>
+</div>
