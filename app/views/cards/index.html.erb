@@ -6,7 +6,7 @@
     <div class="box panel panel-default">
           <%= link_to image_tag(card.image.url(:medium)), card %>
         <div class="panel-body">
-         <p><%= card.title %></p>	
+         <b><p><%= card.title %></p></b>	
          <p><%= card.text %></p>
           <strong><%= card.user.name if card.user %></strong>
           
