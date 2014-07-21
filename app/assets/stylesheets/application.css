@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require 'masonry/transitions'
+ *= require 'masonry/fluid'
  *= require_tree .
  */

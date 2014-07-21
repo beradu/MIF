@@ -6,28 +6,15 @@
     <div class="box panel panel-default">
           <%= link_to image_tag(card.image.url(:medium)), card %>
         <div class="panel-body">
-         <b><p><%= card.title %></p></b>	
-         <p><%= card.text %></p>
-          <strong><%= card.user.name if card.user %></strong>
-          
-          <% if current_user && (card.user == current_user) %>
-                
-               </p>
-                <div class="actions">
-                  <%= link_to edit_card_path(card) do %>
-                    <span class="glyphicon glyphicon-pushpin"></span>
-                    Edit
-                  <% end %>
-                <%= link_to card, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                 <span class="glyphicon glyphicon-trash"></span>
-                  Delete
-                 <% end %>
-                </div>
-      <% end %> 
-      </div>  
+          <div class="panel-heading center">
+              <p><strong><%= card.title %></strong></p>
+            </div>
+              <p><%= card.text %></p>
+         </div>  
     </div>
-      <% end %>
+  <% end %>
 </div>
+
 <div class="center">
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
