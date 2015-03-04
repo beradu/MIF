@@ -1,5 +1,9 @@
 MIF::Application.routes.draw do
-  resources :cards
+   resources :cards do
+    member do
+      post 'worked'
+    end
+  end
   devise_for :users
  
   root 'cards#index'

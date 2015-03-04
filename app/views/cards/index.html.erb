@@ -3,13 +3,22 @@
 
 <div id="cards" class="transitions-enabled">
   <% @cards.each do |card| %>
-    <div class="box panel panel-default">
+    <div class="box panel panel-default flip">
+         <figure>
           <%= link_to image_tag(card.image.url(:medium)), card %>
+          <figcaption>
+                  <p>  Have you worked on this today?&nbsp;<p>
+            <p><strong><%= link_to 'YES', worked_card_path(card, worked: true), method: :post, class: "btn btn-success btn-sm" %></strong>
+            &nbsp;<%= link_to 'NO', worked_card_path(card, worked: false), method: :post, class: "btn btn-primary btn-sm" %><p>
+          </figcaption>
+        </figure>
         <div class="panel-body">
           <div class="panel-heading center">
-              <p><strong><%= card.title %></strong></p>
+            <div class="button">
+              <p><strong><%= link_to card.title, :action => 'show', :id => card.id %></strong></p>
+             </div>
             </div>
-              <p><%= card.text %></p>
+              
          </div>  
     </div>
   <% end %>
@@ -18,4 +27,3 @@
 <div class="center">
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
-

@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-before_action :set_card, only: [:show, :edit, :update, :destroy]
+before_action :set_card, only: [:show, :edit, :update, :destroy, :worked]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -46,7 +46,15 @@ before_action :set_card, only: [:show, :edit, :update, :destroy]
 
 		redirect_to cards_path
 	end
-	
+
+  def worked
+    if @card.update_attribute(:worked, params[:worked])
+      redirect_to @card, notice: 'Card was logged successfully'
+    else
+      render action: 'show'
+    end
+  end
+
 	private
 		def set_card
 			@card = Card.find(params[:id])
@@ -56,7 +64,8 @@ before_action :set_card, only: [:show, :edit, :update, :destroy]
       redirect_to cards_path, notice: "Not authorized to edit this Card" if @card.nil?
    		 end
 		def card_params
-				params.require(:card).permit(:title, :text, :image)
+				params.require(:card).permit(:title, :text, :image, :worked)
 		end		
 end
+
 

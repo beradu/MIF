@@ -9,3 +9,4 @@ class AddAttachmentImageToCards < ActiveRecord::Migration
     drop_attached_file :cards, :image
   end
 end
+

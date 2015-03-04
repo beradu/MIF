@@ -21,10 +21,22 @@
 		<%= @card.text %>
 		</p>
 		</h3>
+		<br>
 <% if current_user && (@card.user == current_user) %>
 
 
-                  <%= link_to edit_card_path(@card) do %>
+            <div>
+                <p align="center">
+                    Have you worked on this today?</p>
+                    <p align="center">
+                    <%= link_to 'YES', worked_card_path(@card, worked: true), method: :post, class: "btn btn-success btn-sm" %>
+                    
+                    <%= link_to 'NO', worked_card_path(@card, worked: false), method: :post, class: "btn btn-primary btn-sm" %>
+                   </p>
+                </div>
+            </div>
+        </br>
+            <%= link_to edit_card_path(@card) do %>
                     <span class="glyphicon glyphicon-pushpin"></span>
                     Edit
                   <% end %>
